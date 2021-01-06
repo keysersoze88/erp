@@ -249,7 +249,7 @@ var mod_AreasCombo = function(a) {
 			m = [],
 			n = {};
 		return a.init = function(d, e, n, o) {
-			return f = d, g = e, h = n, d && e && n ? (Public.ajaxPost("../../statics/js/common/areasData.php", {}, function(d) {
+			return f = d, g = e, h = n, d && e && n ? (Public.ajaxGet("../../statics/js/common/areasData.php", {}, function(d) {
 				if (d) {
 					for (k = !0, j = d.areas_get_response.areas.area, i = 0, len = j.length; i < len; i++) 2 === j[i].type && 1 === j[i].parent_id && l.push({
 						name: j[i].name,
