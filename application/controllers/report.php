@@ -13,7 +13,7 @@ class Report extends CI_Controller {
 	    $profit = $this->data_model->get_profit('and billDate<="'.date('Y-m-d').'"'); 
 	
 		$inventory1  = $inventory2 = 0;
-		$list   = $this->data_model->get_invBalance('a.isDelete=0 and a.billDate<="'.date('Y-m-d').'" '.$this->common_model->get_location_purview().' group by a.invId,a.locationId'); 
+		$list   = $this->data_model->get_invBalance('a.isDelete=0 and a.billDate<="'.date('Y-m-d').'" '.$this->common_model->get_location_purview().' group by a.invId,a.locationId,a.billDate'); 
 		foreach ($list as $arr=>$row) {
 			$price = isset($profit['inprice'][$row['invId']][$row['locationId']]) ? $profit['inprice'][$row['invId']][$row['locationId']] : 0;
 			$inventory1 += $row['qty']; 
