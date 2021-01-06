@@ -282,7 +282,7 @@ class Data_model extends CI_Model{
 		            b.payment,(a.amount + ifnull(b.payment,0)) as amount
 		        from '.$this->db->dbprefix('account').' as a 
 				left join 
-				    (select accId,billDate,sum(payment) as payment from '.$this->db->dbprefix('account_info').' where isDelete=0 '.$where1.' GROUP BY accId) as b 
+				    (select accId,billDate,sum(payment) as payment from '.$this->db->dbprefix('account_info').' where isDelete=0 '.$where1.' GROUP BY accId,billDate) as b 
 			    on a.id=b.accId  
 				where '.$where2;	
 		return $this->mysql_model->query($sql,$type);		
