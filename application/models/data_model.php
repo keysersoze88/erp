@@ -25,7 +25,7 @@ class Data_model extends CI_Model{
 						(select id,name,locationNo from '.$this->db->dbprefix('storage').' where isDelete=0) as c 
 					on a.locationId=c.id 
 					left join 
-						(select id,lowQty,highQty,locationId,invId from '.$this->db->dbprefix('warehouse').' group by invId,locationId) as d
+						(select locationId,invId from '.$this->db->dbprefix('warehouse').' group by invId,locationId) as d
 					on a.invId=d.invId and a.locationId=d.locationId
 				where '.$where;
 		return $this->mysql_model->query($sql,$type);		
@@ -268,7 +268,7 @@ class Data_model extends CI_Model{
 					a.id,a.type,a.difMoney,a.name,a.number,(a.difMoney + ifnull(b.arrears,0)) as amount,b.arrears
 				from '.$this->db->dbprefix('contact').' as a 
 				left join 
-					(select buId,billType,sum(arrears) as arrears from '.$this->db->dbprefix('invoice').' where isDelete=0 '.$where1.' group by buId) as b 
+					(select buId,sum(arrears) as arrears from '.$this->db->dbprefix('invoice').' where isDelete=0 '.$where1.' group by buId) as b 
 			    on a.id=b.buId  
 				where '.$where2;
 		return $this->mysql_model->query($sql,$type); 	
