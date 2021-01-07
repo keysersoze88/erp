@@ -2974,7 +2974,7 @@ Public.zTree = {
         self.obj = $(self._getTemplate(opts)); 
         self.container.append(self.obj);
         setting = $.extend(true, self.setting, setting);
-        Public.ajaxPost(opts.url || '../basedata/assist?action=list&typeNumber=trade&isDelete=2', {}, function(data) {
+        Public.ajaxGet(opts.url || '../basedata/assist?action=list&typeNumber=trade&isDelete=2', {}, function(data) {
             if (data.status === 200 && data.data) {
             	self._callback(data.data.items);
             } else {
