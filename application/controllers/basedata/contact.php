@@ -261,7 +261,7 @@ class Contact extends CI_Controller {
 	    strlen($data['name']) < 1 && str_alert(-1,'名称不能为空');
 		strlen($data['number']) < 1 && str_alert(-1,'编号不能为空');
 		$data['cCategory']     = intval($data['cCategory']);
-		$data['cLevel']        = (float)$data['cLevel'];
+// 		$data['cLevel']        = (float)$data['cLevel'];
 		$data['taxRate']       = isset($data['taxRate']) ? (float)$data['taxRate'] :0;
 		$data['periodMoney']   = (float)$data['periodMoney'];
 		$data['amount']        = (float)$data['amount'];
